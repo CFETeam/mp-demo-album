@@ -28,6 +28,12 @@ const CONF = {
 }
 
 // 生成访问 COS 的域名，无需修改
-CONF.cosDomain = (() => `http://${CONF.cosFileBucket}-${CONF.cosAppId}.costj.myqcloud.com/`)()
+const areaList = {
+    'cn-north': 'tj',
+    'cn-east': 'sh',
+    'cn-south': 'gz',
+    'cn-southwest': 'cd',
+}
+CONF.cosDomain = (() => `http://${CONF.cosFileBucket}-${CONF.cosAppId}.cos${areaList[CONF.cosRegion]}.myqcloud.com/`)()
 
 module.exports = CONF
